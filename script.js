@@ -26,7 +26,14 @@ function makeGrid(){
             gridSingle.style.height = gridSize + "px";
             row.appendChild(gridSingle);
             gridSingle.addEventListener("mouseover", () => {
-                gridSingle.style.opacity = "0.5";
+                let opacity = parseFloat(gridSingle.style.opacity) || 0; // Initialize opacity to 0
+                if(opacity < 1){
+                    opacity += 0.1;
+                    if(opacity > 1){
+                        opacity = 1;
+                    }
+                }
+                gridSingle.style.opacity = opacity;
             });
         }
     }
